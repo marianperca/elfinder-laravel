@@ -37,7 +37,7 @@
             var elf = $('#elfinder').elfinder({
                 url : '<?= URL::action('TSF\ElfinderLaravel\ElfinderController@showConnector') ?>',
                 getFileCallback : function(file) {
-                    window.opener.CKEDITOR.tools.callFunction(funcNum, file);
+                    window.opener.CKEDITOR.tools.callFunction(funcNum, file.url);
                     window.close();
                 },
                 resizable: false
