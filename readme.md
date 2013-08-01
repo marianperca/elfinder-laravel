@@ -36,3 +36,15 @@ In your app/config/packages/tsf/elfinder-laravel, you can change the default fol
 You can add CKEditor integration by adding the following route:
 
     \Route::get('elfinder/ckeditor', 'TSF\ElfinderLaravel\ElfinderController@showCKEditor');
+
+Then in your scripts add the following:
+
+```javascript
+CKEDITOR.editorConfig = function( config )
+{
+    // Define changes to default configuration here. For example:
+    // config.language = 'fr';
+    // config.uiColor = '#AADC6E';
+    config.filebrowserBrowseUrl = '{{{ url("elfinder/ckeditor") }}}';
+};
+```
