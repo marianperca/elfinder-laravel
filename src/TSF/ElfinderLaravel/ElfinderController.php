@@ -45,7 +45,7 @@ class ElfinderController extends \BaseController {
 
         if(count($user_defined_roots))
         {
-            array_merge($default_roots, $user_defined_roots);
+            $roots = array_merge($default_roots, $user_defined_roots);
         }
 
         // Documentation for connector options:
