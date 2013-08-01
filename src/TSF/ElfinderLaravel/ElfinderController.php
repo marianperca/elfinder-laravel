@@ -30,22 +30,19 @@ class ElfinderController extends \BaseController {
     public function showConnector()
     {
         $dir = \Config::get('elfinder-laravel::dir');
+        $roots = \Config::get('elfinder-laravel::roots');
 
-        // default roots
-        $default_roots = array(
-            array(
-                'driver'        => 'LocalFileSystem',                       // driver for accessing file system (REQUIRED)
-                'path'          => public_path().DIRECTORY_SEPARATOR.$dir,  // path to files (REQUIRED)
-                'URL'           => asset($dir),                             // URL to files (REQUIRED)
-                'accessControl' => \Config::get('elfinder-laravel::access') // filter callback (OPTIONAL)
-            )
-        );
-
-        $user_defined_roots = \Config::get('elfinder-laravel::roots');
-
-        if(count($user_defined_roots))
+        if(!$roots)
         {
-            $roots = array_merge($default_roots, $user_defined_roots);
+            $roots = array(
+                array(
+                    'driver'        => 'LocalFileSystem',                       // driver for accessing file system (REQUIRED)
+                    'path'          => public_path().DIRECTORY_SEPARATOR.$dir,  // path to files (REQUIRED)
+                    'URL'           => asset($dir),                             // URL to files (REQUIRED)
+                    'accessControl' => \Config::get('elfinder-laravel::access'), // filter callback (OPTIONAL)
+                    'tmbPath'       => 'thumbs'
+                )
+            );
         }
 
         // Documentation for connector options:
