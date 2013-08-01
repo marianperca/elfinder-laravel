@@ -1,0 +1,23 @@
+{
+    "name": "tsf/elfinder-laravel",
+    "description": "A Laravel Bundle to integrate elFinder 2.0",
+    "authors": [
+        {
+            "name": "Marian Perca",
+            "email": "marian.perca@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x"
+    },
+    "autoload": {
+        "classmap": [
+            "src/elFinder"
+        ],
+        "psr-0": {
+            "TSF\\ElfinderLaravel": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
