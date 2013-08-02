@@ -37,7 +37,7 @@
             $window.resize(function(){
                 var win_height = $window.height();
                 if( $elfinder.height() != win_height ){
-                    $elfinder.height(win_height).resize();
+                    $elfinder.height(win_height-2).resize();
                 }
             });
         });
