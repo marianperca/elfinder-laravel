@@ -26,10 +26,19 @@
         // Documentation for client options:
         // https://github.com/Studio-42/elFinder/wiki/Client-configuration-options
         $().ready(function() {
-            $('#elfinder').elfinder({
-                <?php if($locale){ echo "lang: '$locale',\n"; } ?>
-                url : '<?= URL::action('TSF\ElfinderLaravel\ElfinderController@showConnector') ?>'  // connector URL (REQUIRED)
+            var $window = $(window);
 
+            var $elfinder = $('#elfinder').elfinder({
+                <?php if($locale){ echo "lang: '$locale',\n"; } ?>
+                url : '<?= URL::action('TSF\ElfinderLaravel\ElfinderController@showConnector') ?>',  // connector URL (REQUIRED)
+                resizable: true
+            });
+
+            $window.resize(function(){
+                var win_height = $window.height();
+                if( $elfinder.height() != win_height ){
+                    $elfinder.height(win_height).resize();
+                }
             });
         });
     </script>

@@ -34,14 +34,25 @@
         $().ready(function() {
             var funcNum = getUrlParam('CKEditorFuncNum');
 
-            var elf = $('#elfinder').elfinder({
+            var $elfinder = $('#elfinder').elfinder({
                 url : '<?= URL::action('TSF\ElfinderLaravel\ElfinderController@showConnector') ?>',
                 getFileCallback : function(file) {
                     window.opener.CKEDITOR.tools.callFunction(funcNum, file.url);
                     window.close();
                 },
-                resizable: false
-            }).elfinder('instance');
+                resizable: true,
+                height: $(window).height()
+            });
+
+
+            var $window = $(window);
+
+            $window.resize(function(){
+                var win_height = $window.height();
+                if( $elfinder.height() != win_height ){
+                    $elfinder.height(win_height).resize();
+                }
+            });
         });
     </script>
 
